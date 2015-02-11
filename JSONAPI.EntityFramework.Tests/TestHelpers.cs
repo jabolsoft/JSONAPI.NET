@@ -21,6 +21,7 @@ namespace JSONAPI.EntityFramework.Tests
 
         public static DbConnection GetEffortConnection(string relativeDataPath)
         {
+            Effort.Provider.EffortProviderConfiguration.RegisterProvider();
             var dataPath = Path.GetFullPath(relativeDataPath);
             var dataLoader = new CsvDataLoader(dataPath);
             return DbConnectionFactory.CreateTransient(dataLoader);
